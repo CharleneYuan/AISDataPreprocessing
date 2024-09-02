@@ -1,0 +1,22 @@
+# in_dir: './ais_raw'
+in_dir: 'data_raw/'
+# out_dir: './ais_preprocessed'
+out_dir: 'data_processed/'
+mmsi_info_dir: './vessels_info/mmsi_info.dill'
+vessels_info_dic_dir: './vessels_info/ships_info_dict.json'
+SOG_threshold: 40.0 # filter out SOG > 40
+traj_points_threshold : 80 # filter out trajectories with less than 80 points
+trip_points_threshold : 10 # filter out trips with less than 10 points
+DBSCAN_eps: 0.05
+DBSCAN_min_samples: 5
+max_time_diff: 1800 # filter out trajectories with time 60*30 seconds apart(half an hour)
+max_dis_diff: 10 # filter out trajectories with distance 10 nautical miles apart
+column_rename_dict: {'Longitude': 'longitude', 'Latitude': 'latitude','# Timestamp' :'time', 'Ship type': 'ship_type',
+                    'Navigational status': 'navigational_status', 'Width': 'width', 'Length': 'length', 'Draught': 'draught'}
+colums_to_extract: ['MMSI', '# Timestamp', 'Longitude', 'Latitude', 'SOG', 'COG', 'Ship type', 'Navigational status', 'Width', 'Length', 'Draught']
+colums_to_drop_na: ['MMSI', 'time', 'longitude', 'latitude', 'SOG', 'COG']
+# region of interest
+LAT_MIN : 51.76
+LAT_MAX : 60.87
+LON_MIN : 1.20
+LON_MAX : 20.16
